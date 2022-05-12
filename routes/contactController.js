@@ -19,12 +19,14 @@ router.post('/',async (req,res) => {
 
     try {
         contact = await contact.save();
-        res.redirect('home')
+        res.redirect('/home')
     }
     catch(e) {
         console.log(e);
-        res.render('contact');
+        res.render('/contact');
     }
 })
+
+
 
 module.exports = router;

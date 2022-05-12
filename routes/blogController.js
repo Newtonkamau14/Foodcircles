@@ -1,10 +1,13 @@
 const express = require('express')
-const Article = require('../models/article.model')
 const router = express.Router()
+const Article = require('./../models/article.model')
 
-router.get('/',(req,res) => {
+
+router.get('/',async (req,res) => {
+    const articles = await Article.find()
     res.render('pages/allarticles',{
-        title: "All Articles"
+        title: "All Articles",
+        articles: articles
     });
 });
 
@@ -14,6 +17,7 @@ router.get('/new',(req,res) => {
     });
 });
 
+
 router.post('/', async (req,res) => {
     let article = new Article({
         title: req.body.title,
@@ -22,11 +26,11 @@ router.post('/', async (req,res) => {
     });
     try {
         article = await article.save();
-        res.redirect();
+        res.redirect(`/blog/${article.id}`);
     }
     catch(e) {
         console.log(e);
-        res.render('pages/newarticle');
+        res.render('/blog/new');
     }
 });
 

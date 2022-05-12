@@ -1,17 +1,22 @@
 const express = require('express')
+const app = express()
 const mongoose = require('mongoose')
-const exphbs = require('express-handlebars');
-const path = require('path')
+const expressLayouts = require('express-ejs-layouts')
 const bodyParser = require('body-parser')
-const homeController = require('./routes/homeController');
+const flash = require('express-flash')
+const session = require('express-session')
+const passport = require('passport')
+const MongoStore = require('connect-mongo')
 const shopController = require('./routes/shopController');
 const reviewsController = require('./routes/reviewsController')
 const blogController = require('./routes/blogController');
 const cateringController = require('./routes/cateringController');
 const contactController = require('./routes/contactController');
 const restaurantsController = require('./routes/restaurantsController');
+const authController = require('./routes/authController')
 const PORT = process.env.PORT || 3000;
-const app = express()
+ 
+
 
 mongoose.connect("mongodb://localhost:27017/Foodcircles",{
     useNewUrlParser: true,
@@ -27,24 +32,42 @@ mongoose.connect("mongodb://localhost:27017/Foodcircles",{
 
 //Middleware
 app.use(express.static('public'))
-app.set('views',path.join(__dirname + '/views'));
-app.engine('hbs',exphbs.engine(({ extname: 'hbs', defaultLayout: 'mainLayout', layoutDir:__dirname + '/views/layouts/'})));
-app.set('view engine', 'hbs');
+app.set('view engine', 'ejs');
+app.use(expressLayouts);
+app.set('layout','layouts/layout')
+
 app.use(bodyParser.urlencoded({
-    extended: true
+    extended: false 
 }));
 app.use(bodyParser.json());
-
+app.use(session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({ mongoUrl: 'mongodb://localhost:27017/Foodcircles',collectionName: 'sessions'}),
+    cookie: { 
+        maxAge: 1000 * 60 * 60 *  24
+    }
+}));
+app.use(passport.initialize())
+app.use(session())
 
 //Routes
-app.use('/home', homeController);
 app.use('/shop', shopController);
 app.use('/reviews',reviewsController);
 app.use('/blog',blogController);
 app.use('/catering',cateringController);
 app.use('/contact',contactController);
 app.use('/restaurants',restaurantsController);
+app.use('/auth',authController)
 
+
+
+app.get('/',(req,res) => {
+    res.render('pages/home',{
+        title: "Home"
+    });
+})
 
 
 app.listen(PORT,() => {

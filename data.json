@@ -1,0 +1,132 @@
+{
+"breakfast":[ 
+             {
+              "name":"tea",
+              "price":"200"
+             },
+             {
+              "name":"coffee",
+              "price":"300"
+             },
+             {
+               "name": "samosa",
+               "price": "30"
+             },
+             {
+                 "name": "sausage",
+                 "price": "50"
+             },
+             {
+                 "name": "fruit salad",
+                 "price": "100"
+             }
+                  
+            ],
+"specials":[
+            { 
+             "name":"ugali matumbo",
+             "price":"340"
+            },
+            { 
+             "name":"githeri",
+             "price":"180"
+            }
+            ],
+"pastry":[
+          {
+           "name":"brioche",
+           "price":"600"
+          },
+          {
+           "name":"croissant",
+           "price":"675"
+          },
+          {
+              "name": "blackforest",
+              "price": "1800"
+          },
+          {
+              "name": "vanilla cake",
+              "price": ""
+          },
+          {
+              "name": "muffins",
+              "price": "400"
+          },
+          {
+              "name": "swiss roll",
+              "price": "295"
+          }
+
+        ],
+"desserts": [
+              {
+                  "name": "brownies",
+                  "price": "900"
+              },
+              {
+                  "name": "cheese cakes",
+                  "price": "3000"
+              },
+              {
+                  "name": "eclairs",
+                  "price": "3750"
+              },
+              {
+                  "name": "cupcakes",
+                  "price": "3600"
+              }
+
+            ],
+"kids dishes": [
+                 {
+                     "name": "hot dog sliders",
+                     "price": "500"
+                 },
+                 {
+                     "name": "sloopy joes",
+                     "price": "700"
+                 },
+                 {
+                     "name": "banana smoothies",
+                     "price": "540"
+                 },
+                 {
+                     "name": "grilled cheese",
+                     "price": "390"
+                 },
+                 {
+                     "name": "waffles",
+                     "price": "630"
+                 }
+            ],
+"salads and soup": [
+                     {
+                         "name": "parmesan caeser salad",
+                         "price": "790"
+                     },
+                     {
+                         "name": "apple peacan salad",
+                         "price": "730"
+                     },
+                     {
+                         "name": "famous house salad",
+                         "price": "610"
+                     },
+                     {
+                         "name": "minestrone",
+                         "price": "549"
+                     },
+                     {
+                         "name": "leek soup",
+                         "price": "700"
+                     },
+                     {
+                         "name": "zuppa toscana",
+                         "price": "580"
+                     }
+                 ]                    
+}
+
+
+
