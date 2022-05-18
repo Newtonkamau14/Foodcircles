@@ -7,6 +7,7 @@ const flash = require('express-flash')
 const session = require('express-session')
 const passport = require('passport')
 const MongoStore = require('connect-mongo')
+const methodOverride = require('method-override')
 const shopController = require('./routes/shopController');
 const reviewsController = require('./routes/reviewsController')
 const blogController = require('./routes/blogController');
@@ -15,6 +16,8 @@ const contactController = require('./routes/contactController');
 const restaurantsController = require('./routes/restaurantsController');
 const authController = require('./routes/authController')
 const PORT = process.env.PORT || 3000;
+require('./config/passport.config')
+
  
 
 
@@ -43,14 +46,15 @@ app.use(bodyParser.json());
 app.use(session({
     secret: 'secret',
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     store: MongoStore.create({ mongoUrl: 'mongodb://localhost:27017/Foodcircles',collectionName: 'sessions'}),
     cookie: { 
         maxAge: 1000 * 60 * 60 *  24
     }
 }));
-app.use(passport.initialize())
-app.use(session())
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(methodOverride('_method'))
 
 //Routes
 app.use('/shop', shopController);
@@ -62,13 +66,26 @@ app.use('/restaurants',restaurantsController);
 app.use('/auth',authController)
 
 
+function checkAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next()
+    }
+  
+    res.redirect('/auth/login')
+  }
 
-app.get('/',(req,res) => {
+app.get('/',checkAuthenticated, (req,res) => {
     res.render('pages/home',{
-        title: "Home"
+        title: "Home",
+        
     });
 })
 
+//Logout
+app.delete('/logout', (req, res) => {
+    req.logOut()
+    res.redirect('/auth/login')
+});
 
 app.listen(PORT,() => {
     console.log(`Listening on port ${PORT}`);
