@@ -4,44 +4,84 @@
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-dark min-vh-100">
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0">
+                        <a href="/shop" class="nav-link align-middle px-0">
                             <i class="fs-4"></i> <span class="ms-1 d-none d-sm-inline">Breakfast</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0">
+                        <a href="/shop" class="nav-link align-middle px-0">
                             <i class="fs-4"></i> <span class="ms-1 d-none d-sm-inline">Our Specials</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0">
+                        <a href="/shop" class="nav-link align-middle px-0">
                             <i class="fs-4"></i> <span class="ms-1 d-none d-sm-inline">Pastry</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0">
+                        <a href="/shop" class="nav-link align-middle px-0">
                             <i class="fs-4"></i> <span class="ms-1 d-none d-sm-inline">Desert</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-0 align-middle">
+                        <a href="/shop" class="nav-link px-0 align-middle">
                             <i class="fs-4"></i> <span class="ms-1 d-none d-sm-inline">Kids Dish</span> </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link align-middle px-0">
+                        <a href="/shop" class="nav-link align-middle px-0">
                             <i class="fs-4"></i> <span class="ms-1 d-none d-sm-inline">Salad &amp; Soup</span>
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
-        <div class="col py-3">
-            <% shops.forEach(shop => { %>
+        <div class="container m-2">
+            <% breakfast.meals.forEach(meal => { %>
                 <div class="col-sm-6">
                     <div class="card">
                       <div class="card-body">
-                        <h5 class="card-title"><%= shop.name %> </h5>
-                        <p class="card-text">Price : <%= shop.price %> </p>
+                        <h5 class="card-title"><%= meal.name %> </h5>
+                        <p class="card-text">Price : <%= meal.price %> </p>
+                      </div>
+                    </div>
+                  </div>
+            <% }) %> 
+            <% specials.meals.forEach(meal => { %>
+                <div class="col-sm-6">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title"><%= meal.name %> </h5>
+                        <p class="card-text">Price : <%= meal.price %> </p>
+                      </div>
+                    </div>
+                  </div>
+            <% }) %> 
+            <% pastry.meals.forEach(meal => { %>
+                <div class="col-sm-6">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title"><%= meal.name %> </h5>
+                        <p class="card-text">Price : <%= meal.price %> </p>
+                      </div>
+                    </div>
+                  </div>
+            <% }) %> 
+            <% desserts.meals.forEach(meal => { %>
+                <div class="col-sm-6">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title"><%= meal.name %> </h5>
+                        <p class="card-text">Price : <%= meal.price %> </p>
+                      </div>
+                    </div>
+                  </div>
+            <% }) %> 
+            <% kidsDishes.meals.forEach(meal => { %>
+                <div class="col-sm-6">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title"><%= meal.name %> </h5>
+                        <p class="card-text">Price : <%= meal.price %> </p>
                       </div>
                     </div>
                   </div>
