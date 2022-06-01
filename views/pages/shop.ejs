@@ -5,7 +5,7 @@
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
                         <a href="/shop" class="nav-link align-middle px-0">
-                            <i class="fs-4"></i> <span class="ms-1 d-none d-sm-inline">Breakfast</span>
+                            <button id="action">Breakfast</button>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -35,57 +35,87 @@
                 </ul>
             </div>
         </div>
-        <div class="container m-2">
-            <% breakfast.meals.forEach(meal => { %>
-                <div class="col-sm-6">
-                    <div class="card">
-                      <div class="card-body">
-                        <h5 class="card-title"><%= meal.name %> </h5>
-                        <p class="card-text">Price : <%= meal.price %> </p>
+
+        <!--Page Content-->
+        <div class="container">
+            <div class="grid">
+                <div class="g-col-6 breakfast-list">
+                    <% breakfast.meals.forEach(meal => { %>
+                        <div class="col-sm-6">
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title"><%= meal.name %> </h5>
+                                <p class="card-text">Price : <%= meal.price %> </p>
+                              </div>
+                            </div>
+                          </div>
+                    <% }) %>
+                </div>
+                <div class="g-col-6 specials-list">
+                    <% specials.meals.forEach(meal => { %>
+                        <div class="col-sm-6">
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title"><%= meal.name %> </h5>
+                                <p class="card-text">Price : <%= meal.price %> </p>
+                              </div>
+                            </div>
+                          </div>
+                    <% }) %>
+                </div>
+              </div>
+              <div class="grid">
+                <div class="g-col-6">
+                    <% pastry.meals.forEach(meal => { %>
+                    <div class="col-sm-6">
+                        <div class="card">
+                          <div class="card-body">
+                            <h5 class="card-title"><%= meal.name %> </h5>
+                            <p class="card-text">Price : <%= meal.price %> </p>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-            <% }) %> 
-            <% specials.meals.forEach(meal => { %>
-                <div class="col-sm-6">
-                    <div class="card">
-                      <div class="card-body">
-                        <h5 class="card-title"><%= meal.name %> </h5>
-                        <p class="card-text">Price : <%= meal.price %> </p>
-                      </div>
-                    </div>
-                  </div>
-            <% }) %> 
-            <% pastry.meals.forEach(meal => { %>
-                <div class="col-sm-6">
-                    <div class="card">
-                      <div class="card-body">
-                        <h5 class="card-title"><%= meal.name %> </h5>
-                        <p class="card-text">Price : <%= meal.price %> </p>
-                      </div>
-                    </div>
-                  </div>
-            <% }) %> 
-            <% desserts.meals.forEach(meal => { %>
-                <div class="col-sm-6">
-                    <div class="card">
-                      <div class="card-body">
-                        <h5 class="card-title"><%= meal.name %> </h5>
-                        <p class="card-text">Price : <%= meal.price %> </p>
-                      </div>
-                    </div>
-                  </div>
-            <% }) %> 
-            <% kidsDishes.meals.forEach(meal => { %>
-                <div class="col-sm-6">
-                    <div class="card">
-                      <div class="card-body">
-                        <h5 class="card-title"><%= meal.name %> </h5>
-                        <p class="card-text">Price : <%= meal.price %> </p>
-                      </div>
-                    </div>
-                  </div>
-            <% }) %> 
+                <% }) %>
+                </div>
+                <div class="g-col-6">
+                    <% desserts.meals.forEach(meal => { %>
+                        <div class="col-sm-6">
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title"><%= meal.name %> </h5>
+                                <p class="card-text">Price : <%= meal.price %> </p>
+                              </div>
+                            </div>
+                          </div>
+                    <% }) %>
+                </div>
+              </div>
+              <div class="grid">
+                <div class="g-col-6">
+                    <% kidsDishes.meals.forEach(meal => { %>
+                        <div class="col-sm-6">
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title"><%= meal.name %> </h5>
+                                <p class="card-text">Price : <%= meal.price %> </p>
+                              </div>
+                            </div>
+                          </div>
+                    <% }) %>
+                </div>
+                <div class="g-col-6">
+                    <% saladsnSoup.meals.forEach(meal => { %>
+                        <div class="col-sm-6">
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title"><%= meal.name %> </h5>
+                                <p class="card-text">Price : <%= meal.price %> </p>
+                              </div>
+                            </div>
+                          </div>
+                    <% }) %>
+                </div>
+              </div>
         </div>
     </div>
 </div>
