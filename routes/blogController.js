@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Article = require('./../models/article.model')
 
-
+//Display all articles
 router.get('/',async (req,res) => {
     const articles = await Article.find()
     res.render('pages/allarticles',{
@@ -11,13 +11,14 @@ router.get('/',async (req,res) => {
     });
 });
 
+//Get  a new article
 router.get('/new',(req,res) => {
     res.render('pages/newarticle',{
         title: "New Article"
     });
 });
 
-
+//Create a new article
 router.post('/', async (req,res) => {
     let article = new Article({
         title: req.body.title,
