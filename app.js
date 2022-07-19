@@ -8,6 +8,7 @@ const session = require('express-session')
 const passport = require('passport')
 const MongoStore = require('connect-mongo')
 const methodOverride = require('method-override')
+const axios = require('axios')
 const shopController = require('./routes/shopController');
 const reviewsController = require('./routes/reviewsController')
 const blogController = require('./routes/blogController');
@@ -19,8 +20,7 @@ const PORT = process.env.PORT || 3000;
 require('./config/passport.config')
 
  
-
-
+//Db connection
 mongoose.connect("mongodb://localhost:27017/Foodcircles",{
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -40,8 +40,10 @@ app.use(expressLayouts);
 app.set('layout','layouts/layout')
 
 app.use(bodyParser.urlencoded({
+    limit: '10mb',
     extended: false 
 }));
+
 app.use(bodyParser.json());
 app.use(session({
     secret: 'secret',
@@ -65,7 +67,7 @@ app.use('/contact',contactController);
 app.use('/restaurants',restaurantsController);
 app.use('/auth',authController)
 
-
+//Check user is authenticated
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
       return next()
@@ -74,6 +76,9 @@ function checkAuthenticated(req, res, next) {
     res.redirect('/auth/login')
   }
 
+
+
+//Get home page
 app.get('/',checkAuthenticated, (req,res) => {
     res.render('pages/home',{
         title: "Home",
@@ -86,6 +91,8 @@ app.delete('/logout', (req, res) => {
     req.logOut()
     res.redirect('/auth/login')
 });
+
+
 
 app.listen(PORT,() => {
     console.log(`Listening at http://localhost:${PORT}:`);

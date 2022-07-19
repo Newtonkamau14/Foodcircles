@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router();
 const Contact = require('./../models/contact.model');
 
+//Get contact page
 router.get('/', (req,res) => {
     res.render('pages/contact',{
         title: "Contact",
@@ -9,6 +10,8 @@ router.get('/', (req,res) => {
     });
 });
 
+
+//Post contact form to db
 router.post('/',async (req,res) => {
     let contact = new Contact({
         firstname: req.body.firstname,
