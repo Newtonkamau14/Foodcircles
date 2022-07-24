@@ -5,11 +5,11 @@ const reviewSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    mealtype: {
+    mealType: {
         type: String,
     },
     stars: {
-        type: Numbers,
+        type: Number,
         required: true
     },
     description : { 
