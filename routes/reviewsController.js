@@ -2,15 +2,25 @@ const express = require('express')
 const Review = require('./../models/review.model')
 const router = express.Router()
 
-//Get review page
-router.get('/', (req,res) => {
+//Get all reviews page
+router.get('/',async (req,res) => {
+    const reviews = await Review.find();
     res.render('pages/reviews',{
-        title: "Reviews"
+        title: "Reviews",
+        reviews: reviews
     });
 });
 
+//Get new review page
+router.get('/new',(req,res) => {
+    res.render('pages/newreview',{
+        title: "New Review"
+    })
+})
+
+
 //Post review 
-router.post('/',async(req,res) => {
+router.post('/new',async(req,res) => {
     let review  = new Review({
         restaurantName: req.body.restaurantName,
         mealType: req.body.mealType,

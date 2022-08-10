@@ -1,0 +1,24 @@
+<div class="container">
+    <form class="row g-3 border m-4 p-3" action="/reviews/new" method="post">
+        <div class="col-md-6">
+            <label for="restaurantname" class="form-label">Restaurant Name</label>
+            <input type="text" class="form-control" id="restaurantName"  name="restaurantName" required>
+        </div>
+        <div class="col-md-6">
+            <label for="mealtype" class="form-label">Meal Type</label>
+            <input type="text" class="form-control" id="mealType" name="mealType">
+        </div>
+        <div class="col-md-4">
+                <label for="formControlRange">Rating</label>
+                <input type="range" class="form-control-range" id="formControlRange" name="stars" min="1" max="5" step="1" onInput="$('#rangeval').html($(this).val())">
+                <span id="rangeval">3<!-- Default value --></span>
+        </div>
+        <div class="col-md-12">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" name="description"></textarea>
+        </div>
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-primary m-2">Submit</button>
+        </div>
+    </form>
+</div>
