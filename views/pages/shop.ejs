@@ -1,121 +1,26 @@
-<div class="container-fluid">
-    <div class="row flex-nowrap">
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-dark min-vh-100">
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                    <li class="nav-item">
-                        <a href="/shop" class="nav-link align-middle px-0">
-                            <button id="action">Breakfast</button>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/shop" class="nav-link align-middle px-0">
-                            <i class="fs-4"></i> <span class="ms-1 d-none d-sm-inline">Our Specials</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/shop" class="nav-link align-middle px-0">
-                            <i class="fs-4"></i> <span class="ms-1 d-none d-sm-inline">Pastry</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/shop" class="nav-link align-middle px-0">
-                            <i class="fs-4"></i> <span class="ms-1 d-none d-sm-inline">Desert</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/shop" class="nav-link px-0 align-middle">
-                            <i class="fs-4"></i> <span class="ms-1 d-none d-sm-inline">Kids Dish</span> </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/shop" class="nav-link align-middle px-0">
-                            <i class="fs-4"></i> <span class="ms-1 d-none d-sm-inline">Salad &amp; Soup</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+<!--Page Content-->
+<div class="container">
+  <form class="d-flex m-3" action="/shop/search" method="get" >
+    <input class="form-control me-2" name="fsearch" id="fsearch" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
 
-        <!--Page Content-->
-        <div class="container">
-            <div class="grid">
-                <div class="g-col-6 breakfast-list">
-                    <% breakfast.meals.forEach(meal => { %>
-                        <div class="col-sm-6">
-                            <div class="card">
-                              <div class="card-body">
-                                <h5 class="card-title"><%= meal.name %> </h5>
-                                <p class="card-text">Price : <%= meal.price %> </p>
-                              </div>
-                            </div>
-                          </div>
-                    <% }) %>
-                </div>
-                <div class="g-col-6 specials-list">
-                    <% specials.meals.forEach(meal => { %>
-                        <div class="col-sm-6">
-                            <div class="card">
-                              <div class="card-body">
-                                <h5 class="card-title"><%= meal.name %> </h5>
-                                <p class="card-text">Price : <%= meal.price %> </p>
-                              </div>
-                            </div>
-                          </div>
-                    <% }) %>
-                </div>
+  <% if(data.length>0) { %>
+      <% for(var i=0;i < data.length;i++) { %>
+        <div class="grid">
+          <div class="g-col-6 breakfast-list">
+            <div class="col-sm-6">
+              <div class="card">
+                  <div class="card-body">
+                      <h5 class="card-title"><%= data[i].meal.name %> </h5>
+                      <p class="card-text">Price : <%= data[i].meal.price %> </p>
+                  </div>
               </div>
-              <div class="grid">
-                <div class="g-col-6">
-                    <% pastry.meals.forEach(meal => { %>
-                    <div class="col-sm-6">
-                        <div class="card">
-                          <div class="card-body">
-                            <h5 class="card-title"><%= meal.name %> </h5>
-                            <p class="card-text">Price : <%= meal.price %> </p>
-                          </div>
-                        </div>
-                      </div>
-                <% }) %>
-                </div>
-                <div class="g-col-6">
-                    <% desserts.meals.forEach(meal => { %>
-                        <div class="col-sm-6">
-                            <div class="card">
-                              <div class="card-body">
-                                <h5 class="card-title"><%= meal.name %> </h5>
-                                <p class="card-text">Price : <%= meal.price %> </p>
-                              </div>
-                            </div>
-                          </div>
-                    <% }) %>
-                </div>
-              </div>
-              <div class="grid">
-                <div class="g-col-6">
-                    <% kidsDishes.meals.forEach(meal => { %>
-                        <div class="col-sm-6">
-                            <div class="card">
-                              <div class="card-body">
-                                <h5 class="card-title"><%= meal.name %> </h5>
-                                <p class="card-text">Price : <%= meal.price %> </p>
-                              </div>
-                            </div>
-                          </div>
-                    <% }) %>
-                </div>
-                <div class="g-col-6">
-                    <% saladsnSoup.meals.forEach(meal => { %>
-                        <div class="col-sm-6">
-                            <div class="card">
-                              <div class="card-body">
-                                <h5 class="card-title"><%= meal.name %> </h5>
-                                <p class="card-text">Price : <%= meal.price %> </p>
-                              </div>
-                            </div>
-                          </div>
-                    <% }) %>
-                </div>
-              </div>
-        </div>
-    </div>
+            </div>
+          </div>
+        </div>  
+
+      <% } %> 
+
+  <% } %> 
 </div>
