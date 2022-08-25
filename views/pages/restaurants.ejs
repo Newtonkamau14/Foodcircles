@@ -1,3 +1,21 @@
 <div class="container">
     <a href="restaurants/add" class="m-4 btn btn-success">Add Restaurant</a>
 </div>
+<div class="container text-center">
+    <section class="my-3">
+        <div class="row">
+                <% restaurants.forEach(restaurant => { %>
+                        <div class="col-3">
+                            <div class="card shadow" style="width: 18rem;">
+                                <img class="card-img-top img-fluid" src="<%= restaurant.image %>" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title font-poppins"><%= restaurant.name %></h5>
+                                  <p class="text-secondary font-size-09"><%= restaurant.location %> </p>
+                                  <a href="#" class="btn btn-info font-size-09 text-light">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                <% }) %> 
+        </div>
+    </section>
+</div>

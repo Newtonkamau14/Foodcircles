@@ -9,7 +9,7 @@ const passport = require('passport')
 const MongoStore = require('connect-mongo')
 const methodOverride = require('method-override')
 const axios = require('axios')
-const shopController = require('./routes/shopController');
+const mealController = require('./routes/mealController');
 const reviewsController = require('./routes/reviewsController')
 const blogController = require('./routes/blogController');
 const cateringController = require('./routes/cateringController');
@@ -35,6 +35,7 @@ mongoose.connect("mongodb://localhost:27017/Foodcircles",{
 
 //Middleware
 app.use(express.static('public'))
+app.use(express.static('uploads'))
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 app.set('layout','layouts/layout')
@@ -59,7 +60,7 @@ app.use(passport.session());
 app.use(methodOverride('_method'))
 
 //Routes
-app.use('/shop', shopController);
+app.use('/meal', mealController);
 app.use('/reviews',reviewsController);
 app.use('/blog',blogController);
 app.use('/catering',cateringController);
@@ -93,7 +94,7 @@ app.delete('/logout', (req, res) => {
 });
 
 
-
+//Listening on port
 app.listen(PORT,() => {
     console.log(`Listening at http://localhost:${PORT}:`);
 });
