@@ -4,6 +4,8 @@ const User = require('../models/user.model')
 const router = express.Router()
 require('./../config/passport.config')
 
+
+
 function checkNotAuthenticated(req,res, next) {
     if(req.isAuthenticated()) {
         return res.redirect('/')
@@ -27,6 +29,7 @@ router.get('/register',checkNotAuthenticated,(req,res) => {
     });
 })
 
+//Register new user
 router.post('/register',checkNotAuthenticated, async (req,res) => {
     let user = new User({
        username: req.body.username, 

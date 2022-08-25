@@ -11,7 +11,19 @@ router.get('/',async (req,res) => {
     });
 });
 
-//Get  a new article
+//Display one article with id
+router.get('/:id',async(req,res) => {
+    const article = await Article.findOne({id: req.params.id })
+    if(article == null)res.redirect('/')
+    res.render('pages/showarticle', { 
+        title: "Article",
+        article: article
+    })
+})
+
+
+
+//Get a new article
 router.get('/new',(req,res) => {
     res.render('pages/newarticle',{
         title: "New Article"
