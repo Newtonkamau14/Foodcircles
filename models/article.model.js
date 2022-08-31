@@ -10,7 +10,8 @@ const blogSchema = new mongoose.Schema({
         type: String
     },
     markdown: {
-        type: String
+        type: String,
+        required: true
     },
     createdAt: {
         type: Date,
