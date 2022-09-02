@@ -12,7 +12,7 @@ router.get('/',(req,res) => {
                 console.log(err)
             }
             else { 
-                res.render('pages/meal',{
+                res.render('meal',{
                     title: "Meals",
                     data:data
                 });
@@ -34,7 +34,7 @@ router.get('/search',(req,res) => {
                 console.log(err);
             }
             else {
-                res.render('pages/meal',{
+                res.render('meal',{
                     title: "Meals",
                     data:data
                 });

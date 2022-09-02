@@ -5,7 +5,7 @@ const router = express.Router()
 //Get all reviews page
 router.get('/',async (req,res) => {
     const reviews = await Review.find();
-    res.render('pages/reviews',{
+    res.render('reviews/reviews',{
         title: "Reviews",
         reviews: reviews
     });
@@ -13,7 +13,7 @@ router.get('/',async (req,res) => {
 
 //Get new review page
 router.get('/new',(req,res) => {
-    res.render('pages/newreview',{
+    res.render('reviews/newreview',{
         title: "New Review"
     })
 })

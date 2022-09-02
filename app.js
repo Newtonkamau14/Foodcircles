@@ -11,12 +11,12 @@ const methodOverride = require('method-override')
 const axios = require('axios')
 const mealController = require('./routes/mealController');
 const reviewsController = require('./routes/reviewsController')
-const blogController = require('./routes/blogController');
+const articleController = require('./routes/articleController');
 const cateringController = require('./routes/cateringController');
 const contactController = require('./routes/contactController');
 const restaurantsController = require('./routes/restaurantsController');
 const authController = require('./routes/authController')
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 require('./config/passport.config')
 
  
@@ -42,7 +42,7 @@ app.set('layout','layouts/layout')
 
 app.use(bodyParser.urlencoded({
     limit: '10mb',
-    extended: false 
+    extended: true 
 }));
 
 app.use(bodyParser.json());
@@ -62,7 +62,7 @@ app.use(methodOverride('_method'))
 //Routes
 app.use('/meal', mealController);
 app.use('/reviews',reviewsController);
-app.use('/blog',blogController);
+app.use('/article',articleController);
 app.use('/catering',cateringController);
 app.use('/contact',contactController);
 app.use('/restaurants',restaurantsController);
@@ -81,7 +81,7 @@ function checkAuthenticated(req, res, next) {
 
 //Get home page
 app.get('/',checkAuthenticated, (req,res) => {
-    res.render('pages/home',{
+    res.render('home',{
         title: "Home",
         
     });

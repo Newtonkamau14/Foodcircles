@@ -4,7 +4,7 @@ const Contact = require('./../models/contact.model');
 
 //Get contact page
 router.get('/', (req,res) => {
-    res.render('pages/contact',{
+    res.render('contact',{
         title: "Contact",
         viewTitle: "Contact Form"
     });

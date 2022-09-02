@@ -28,7 +28,7 @@ const upload = multer({
 //Get restaurant names
 router.get('/',async (req,res) => {
     const restaurants = await Restaurant.find();
-    res.render('pages/restaurants',{
+    res.render('restaurants/restaurants',{
         title: "Restaurants",
         restaurants: restaurants
     });
@@ -36,7 +36,7 @@ router.get('/',async (req,res) => {
 
 //Get new restaurant page
 router.get('/add',(req,res) => {
-    res.render('pages/addrestaurant',{
+    res.render('restaurants/addrestaurant',{
         title: "Add Restaurant"
     })
 })

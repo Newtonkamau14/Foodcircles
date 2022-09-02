@@ -15,7 +15,7 @@ function checkNotAuthenticated(req,res, next) {
 
 //Login 
 router.get('/login',checkNotAuthenticated,(req,res) =>{
-    res.render('pages/login',{
+    res.render('auth/login',{
         title: 'Login'
     });
 });
@@ -24,7 +24,7 @@ router.post('/login',checkNotAuthenticated,passport.authenticate('local',{ succe
 
 //Register
 router.get('/register',checkNotAuthenticated,(req,res) => {
-    res.render('pages/register',{
+    res.render('auth/register',{
         title: 'Register'
     });
 })
