@@ -4,7 +4,7 @@
         <%= article.createdAt.toLocaleDateString() %> 
     </div>
     <a href="/article" class="btn btn-secondary">All Articles</a>
-    <a href="/article/<%= article.id %>" class="btn btn-info">Edit</a>
+    <a href="/article/edit/<%= article.id %>" class="btn btn-info">Edit</a>
 
     <div>
         <%= article.markdown %> 

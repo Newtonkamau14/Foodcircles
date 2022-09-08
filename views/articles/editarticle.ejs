@@ -1,6 +1,6 @@
 <div class="container">
-    <h1 class="text-center">New Article</h1>
-    <form action="/article/<%= article.id %>?_method=PUT" method="post" class="border my-3 p-3">
+    <h1 class="text-center">Edit Article</h1>
+    <form action="/article/edit/<%= article.id %>?_method=PUT" method="post" class="border my-3 p-3">
         <div class="form-group">
             <label for="title">Title</label>
             <input type="text" name="title" placeholder="Title" class="form-control" value="<%= article.title %>">

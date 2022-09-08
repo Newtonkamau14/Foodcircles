@@ -21,7 +21,7 @@ router.get('/new',(req,res) => {
 });
 
 //Get edit page
-router.get('/:id',async (req,res) => {
+router.get('/edit/:id',async (req,res) => {
     const article = await Article.findById({_id: req.params.id})
     res.render('articles/editarticle',{
         title: "Edit Article",
@@ -49,7 +49,7 @@ router.post('/new',async(req,res) => {
 
 
 //Get specific article
-router.get('/:id',async(req,res) => {
+router.get('/show/:id',async(req,res) => {
     const article = await Article.findById({_id: req.params.id})
     res.render('articles/showarticle',{
         title: "Article",
@@ -58,11 +58,11 @@ router.get('/:id',async(req,res) => {
 });
 
 //Edit specific article
-router.put('/:id',async(req,res) => {
+router.put('/edit/:id',async(req,res) => {
     let article
 
     try {
-        await Article.findById({_id: req.params.id});
+        article = await Article.findById({_id: req.params.id});
         article.title = req.body.title
         article.description = req.body.description
         article.markdown = req.body.markdown

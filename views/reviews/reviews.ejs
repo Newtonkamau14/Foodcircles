@@ -2,12 +2,16 @@
     <h1>Reviews</h1>
     <!--Review page-->
     <% reviews.forEach(review => { %>
-        <div class="card shadow-sm border border-2" style="width: 18rem;">
+        <div class="card shadow-sm border border-2 my-2" style="width: 18rem;">
             <div class="card-body">
               <h5 class="card-title"><%= review.restaurantName %></h5>
               <h6 class="card-subtitle mb-2 text-muted"><%= review.mealType %></h6>
               <p class="card-text">Rating: <%= review.stars %></p>
               <p class="card-text"><%= review.description %></p>
+              <a href="/reviews/edit/<%= review.id %>" class="btn btn-secondary">Edit</a>
+              <form action="/reviews/delete/<%= review.id %>?_method=DELETE" method="post" class="d-inline">
+                  <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
             </div>
           </div>
     <% }) %> 

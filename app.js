@@ -16,7 +16,7 @@ const cateringController = require('./routes/cateringController');
 const contactController = require('./routes/contactController');
 const restaurantsController = require('./routes/restaurantsController');
 const authController = require('./routes/authController')
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 require('./config/passport.config')
 
  
