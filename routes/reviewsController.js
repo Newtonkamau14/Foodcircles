@@ -1,5 +1,6 @@
 const express = require('express')
 const Review = require('./../models/review.model')
+const Restaurant = require('../models/restaurant.model')
 const router = express.Router()
 
 //Get all reviews page
@@ -12,10 +13,12 @@ router.get('/',async (req,res) => {
 });
 
 //Get new review page
-router.get('/new',(req,res) => {
+router.get('/new',async (req,res) => {
+    const restaurants = await Restaurant.find()
     res.render('reviews/newreview',{
         title: "New Review",
-        review: new Review()
+        review: new Review(),
+        restaurants: restaurants
     })
 })
 

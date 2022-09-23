@@ -1,3 +1,4 @@
+'use strict';
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
@@ -8,15 +9,7 @@ const session = require('express-session')
 const passport = require('passport')
 const MongoStore = require('connect-mongo')
 const methodOverride = require('method-override')
-const axios = require('axios')
-const mealController = require('./routes/mealController');
-const reviewsController = require('./routes/reviewsController')
-const articleController = require('./routes/articleController');
-const cateringController = require('./routes/cateringController');
-const contactController = require('./routes/contactController');
-const restaurantsController = require('./routes/restaurantsController');
-const authController = require('./routes/authController')
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 require('./config/passport.config')
 
  
@@ -60,13 +53,13 @@ app.use(passport.session());
 app.use(methodOverride('_method'))
 
 //Routes
-app.use('/meal', mealController);
-app.use('/reviews',reviewsController);
-app.use('/article',articleController);
-app.use('/catering',cateringController);
-app.use('/contact',contactController);
-app.use('/restaurants',restaurantsController);
-app.use('/auth',authController)
+app.use('/meal',require('./routes/mealController'));
+app.use('/reviews',require('./routes/reviewsController'));
+app.use('/article',require('./routes/articleController'));
+app.use('/catering',require('./routes/cateringController'));
+app.use('/contact',require('./routes/contactController'));
+app.use('/restaurants',require('./routes/restaurantsController'));
+app.use('/auth',require('./routes/authController'))
 
 //Check user is authenticated
 function checkAuthenticated(req, res, next) {
@@ -76,7 +69,6 @@ function checkAuthenticated(req, res, next) {
   
     res.redirect('/auth/login')
   }
-
 
 
 //Get home page
@@ -96,5 +88,5 @@ app.delete('/logout', (req, res) => {
 
 //Listening on port
 app.listen(PORT,() => {
-    console.log(`Listening at http://localhost:${PORT}:`);
+    console.log(`Listening at http://localhost:${PORT}`);
 });

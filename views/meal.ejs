@@ -5,22 +5,29 @@
     <button class="btn btn-outline-success" type="submit">Search</button>
   </form>
 
+  <h4><span class="text-warning">Meals</span> offered</h4>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Breakfast</li>
+      <li class="breadcrumb-item active" aria-current="page">Specials</li>
+      <li class="breadcrumb-item active" aria-current="page">Pastry</li>
+      <li class="breadcrumb-item active" aria-current="page">Desserts</li>
+      <li class="breadcrumb-item active" aria-current="page">Kids dishes</li>
+      <li class="breadcrumb-item active" aria-current="page">Salads and soup</li>
+    </ol>
+  </nav>
+  
   <% if(data.length>0) { %>
+    <div class="row">
       <% for(var i=0;i < data.length;i++) { %>
-        <div class="grid m-3">
-          <div class="g-col-6 breakfast-list">
-            <div class="col-sm-6">
-              <div class="card">
-                  <div class="card-body">
-                      <h5 class="card-title"><%= data[i].meal.name %> </h5>
-                      <p class="card-text">Price : <%= data[i].meal.price %> </p>
-                  </div>
-              </div>
+        <div class="card m-1">
+            <div class="card-body">
+                <h5 class="card-title"><%= data[i].meal.name %> </h5>
+                <p class="card-text">Price : <%= data[i].meal.price %> </p>
             </div>
-          </div>
-        </div>  
-
-      <% } %> 
-
+        </div>
+      <% } %>
+    </div>
+  
   <% } %> 
 </div>

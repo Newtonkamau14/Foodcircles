@@ -55,3 +55,8 @@
 .bottom .copyright p, .bottom .copyright a:hover{
     color: #6c6d83;
 }
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}

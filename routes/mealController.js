@@ -5,7 +5,8 @@ const router = express.Router()
 
 
 //Get all meals from collection
-router.get('/',(req,res) => {
+router.get('/',async (req,res) => {
+    //const breakfast = await Meal.find({type:"breakfast"})
     try {
         Meal.find((err,data) => {
             if(err){
@@ -14,7 +15,8 @@ router.get('/',(req,res) => {
             else { 
                 res.render('meal',{
                     title: "Meals",
-                    data:data
+                    data:data,
+
                 });
             }
         })

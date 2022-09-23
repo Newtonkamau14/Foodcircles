@@ -2,7 +2,11 @@
     <form class="row g-3 border m-4 p-3" action="/reviews/new" method="post">
         <div class="col-md-6">
             <label for="restaurantname" class="form-label">Restaurant Name</label>
-            <input type="text" class="form-control" id="restaurantName"  name="restaurantName" value="<%= review.restaurantName %>" required>
+            <select class="form-control" id="exampleFormControlSelect1" name="restaurantName">
+                <% restaurants.forEach((restaurant) => { %>
+                    <option><%= restaurant.name %> </option>
+                <% }) %> 
+            </select>
         </div>
         <div class="col-md-6">
             <label for="mealtype" class="form-label">Meal Type</label>
